@@ -97,8 +97,12 @@ function animateGhost(){
       score = parseInt((new Date() - startTime) / 1000)
       
      //alert("Game Over, you survived: " + score + " secs")
-     window.alert("Game Over, you survived: " + score + " secs");
-      resetGame();
+     
+    
+     if(confirm("Game Over, you survived: " + score + " secs")){
+    window.location.reload();  
+}
+      
     }
   }
 }
@@ -162,12 +166,12 @@ function moveNun(){
   nun.frameY = 1;
   }
   //40 is the down keycode
-  if(keys[40]&& nun.y < canvas.height - nun.height*4){
+  if(keys[40]&& nun.y < canvas.height - nun.height*2.8){
     nun.y += nun.speed;
     nun.frameY =0;
   }
   //39 is the right keycode
-  if(keys[39]&& nun.x < canvas.width - 250){
+  if(keys[39]&& nun.x < canvas.width - 190){
     nun.x += nun.speed;
     nun.frameY = 2;
   }
@@ -249,11 +253,12 @@ function ghostAttack(first,second){
 
 function resetGame(){
       
-    nun.x= 700; 
-    nun.y=500;
-    score = 0; 
+    nun.x= canvas.width/2; 
+    nun.y= canvas.height/2;
    
+    
 }
+
 
 
     
@@ -287,8 +292,8 @@ function resetGame(){
         ctx.font = "30px Verdana"
         ctx.fillText("Game Over: " + score + " secs", 50, 35);
         ctx.restore();
-    }
-//window.onload = setInterval(animateGhost,1000/30);*/
+    }*/
+window.onload = alert("click the screen to start, how long can you survive?");
 window.addEventListener('click', function(){
    setInterval(animateGhost,1000/30);
     
