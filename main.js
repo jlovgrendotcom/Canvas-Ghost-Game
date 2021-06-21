@@ -23,8 +23,8 @@ class Ghost {
     this.width = 125;
     this.frameX = 0; //cordinates on spirte sheet so we know which image
     this.frameY =0;
-    this.x =Math.random()* canvas.width; // coordinates for where we want the sprite on the background image
-    this.y =Math.random()* canvas.height;//use math.random so the ghost arent on top of each other
+    this.x =200; // coordinates for where we want the sprite on the background image
+    this.y =500;//use math.random so the ghost arent on top of each other
     this.speed = 6;
     this.action = ghostsActions [Math.floor(Math.random()* ghostsActions.length)]; // randomnizes the index selction of which direction the ghost will go. Math.floor rounds down to an even number.
     if(this.action === 'up'){
@@ -50,7 +50,7 @@ class Ghost {
       
     if (this.x > canvas.width + this.width){
      this.x = 0 - this.width;
-      this.y = Math.random()* (canvas.height - this.height);
+      this.y = Math.random()* (canvas.height - this.height*2);
         //randomly appears on the background. Minus the ghodt height so that it doesnt spawn off screen
     
     }
@@ -62,7 +62,7 @@ class Ghost {
     
     if (this.y < (0 -this.height)){
       this.y = canvas.height + this.height;
-      this.x = Math.random() * canvas.width;
+      this.x = Math.random() * canvas.width- this.height*2;
       
     }else{ //ghost has not walked off the screen yet. substracting its location by its speed it will make it go off the screen gradually.
       this.y -=this.speed;
@@ -100,8 +100,10 @@ function animateGhost(){
      
     
      if(confirm("Game Over, you survived: " + score + " secs")){
+    resetGame();
     window.location.reload();  
 }
+
       
     }
   }
@@ -156,12 +158,12 @@ const nun = {
   
 function moveNun(){
   //38 is the up keycode
-  if (keys[38]){
+  if (keys[38]&& nun.y > 120){
     nun.y -= nun.speed;
     nun.frameY = 3;
   }
   //37 is the left keycode
-  if(keys[37]){
+  if(keys[37]&& nun.x >145){
   nun.x -= nun.speed;
   nun.frameY = 1;
   }
@@ -253,8 +255,8 @@ function ghostAttack(first,second){
 
 function resetGame(){
       
-    nun.x= canvas.width/2; 
-    nun.y= canvas.height/2;
+    nun.x= 0; 
+    nun.y= 0;
    
     
 }
