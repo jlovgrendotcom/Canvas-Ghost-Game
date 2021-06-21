@@ -1,8 +1,10 @@
 # Canvas-Ghost-Game
 
 Plot:
-You play as Tabathia. She has to rescue 10 pure souls in the tomb to complete her nun training. Blue is pure, any other color is evil.
+You play as Tabathia the nun. Shes stuck in a tomb of evil ghosts. How long can she survive?
 
 Gameplay: 
 
-Ghosts will randomly appear. You have to touch the blue ghost to rescue them. If any other color ghost touches you, you loose. 
+Click to start.
+Ghosts will randomly appear. Avoid at all costs.
+Haley's Highschore: 80 seconds 
