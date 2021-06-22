@@ -169,12 +169,15 @@ function moveNun(){
   nun.frameY = 1;
   }
   //40 is the down keycode
-  if(keys[40]&& nun.y < canvas.height - nun.height*2.8){
+  //if(keys[40]&& nun.y < canvas.height - nun.height*2.8)
+  if(keys[40]&& nun.y < canvas.height - (nun.height*2.8)){
     nun.y += nun.speed;
     nun.frameY =0;
   }
   //39 is the right keycode
-  if(keys[39]&& nun.x < canvas.width - 190){
+  //if(keys[39]&& nun.x < canvas.width - 190)
+  //if(keys[39]&& nun.x < canvas.width - (539 + 1))
+  if(keys[39]&& nun.x < canvas.width - (nun.height*14)){
     nun.x += nun.speed;
     nun.frameY = 2;
   }
