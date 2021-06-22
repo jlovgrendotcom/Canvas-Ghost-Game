@@ -13,7 +13,7 @@ images.soul.src ='PeacefulGhost.png';
 
 //const ghostsActions = ['up','right', 'down right', 'down']
 const ghostsActions = ['up','right'];
-const numberofGhosts = 12;
+const numberofGhosts = 24;
 const ghosts = [];
 
 
@@ -86,6 +86,7 @@ function drawGhost(img, sX,sY,sW,sH,dX,dY,dW,dH){
    
 
 function animateGhost(){
+  
   ctx.clearRect(0,0,canvas.width, canvas.height);
   for (i = 0; i < ghosts.length; i++ ){
     ghosts[i].draw();
@@ -98,7 +99,7 @@ function animateGhost(){
       
      //alert("Game Over, you survived: " + score + " secs")
      
-    
+   
      if(confirm("Game Over, you survived: " + score + " secs")){
     resetGame();
     window.location.reload();  
@@ -247,16 +248,18 @@ startAnimating(60);
 // when the nun touches a ghost
 
 function ghostAttack(first,second){
-  return !( first.x > second.x +second.width ||
-          first.x + first.width <second.x ||
-          first.y > second.y + second.height ||
-          first.y +first.height < second.y); //if any of these are true then the nun did not touch a ghost. ! returns these as false. if all these statments are not true  the nun did touch the ghost. ! returns these as true (double neg)
+  return !( first.x > second.x +second.width - 50|| //first.x is the left, first.width is the right
+          first.x + first.width - 60 <second.x ||
+          first.y > second.y + second.height  ||
+          first.y + first.height - 60 < second.y );
+          
+           //if any of these are true then the nun did not touch a ghost. ! returns these as false. if all these statments are not true  the nun did touch the ghost. ! returns these as true (double neg)
 }
 
 function resetGame(){
       
-    nun.x= 0; 
-    nun.y= 0;
+    nun.x= -10; 
+    nun.y= -10;
    
     
 }
@@ -265,28 +268,28 @@ function resetGame(){
 
     
     /* SCORE */
-    //var startTime;
+    /*var starttime;
     // ending elapsed time in seconds
-    //var score;
+    var score;
 
- /*   function drawElapsedTime() {
-      var startTime;
-        var elapsed = parseInt((new Date() - startTime) / 1000);
-        ctx.save();
-        ctx.beginPath();
+    function drawElapsedTime() {
+      
+        var elapsed = parseInt((new Date() - starttime) / 1000);
+        //ctx.save();
+        //ctx.beginPath();
         ctx.fillStyle = "red";
         ctx.font = "14px Verdana"
         // draw the running time at half opacity
-        ctx.globalAlpha = 0.50;
+        //ctx.globalAlpha = 0.50;
         ctx.fillText(elapsed + " secs", canvas.width - 75, 25);
-        ctx.restore();
+        //ctx.restore();
     }
 
     function drawFinalScore() {
-      var score;
+
         // set the final score just once
         if (score == null) {
-            score = parseInt((new Date() - startTime) / 1000);
+            score = parseInt((new Date() - starttime) / 1000);
         }
         ctx.save();
         ctx.beginPath();
@@ -295,10 +298,11 @@ function resetGame(){
         ctx.fillText("Game Over: " + score + " secs", 50, 35);
         ctx.restore();
     }*/
-window.onload = alert("click the screen to start, how long can you survive?");
+
+window.onload = alert("GHOST RUN. HOW LONG CAN YOU SURVIVE? CLICK THE SCREEN TO START.");
 window.addEventListener('click', function(){
    setInterval(animateGhost,1000/30);
-    
+
 }); 
 window.addEventListener('resize', function(){
   canvas.height = window.innerHeight;
