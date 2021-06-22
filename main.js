@@ -13,7 +13,7 @@ images.soul.src ='PeacefulGhost.png';
 
 //const ghostsActions = ['up','right', 'down right', 'down']
 const ghostsActions = ['up','right'];
-const numberofGhosts = 24;
+const numberofGhosts = 15;
 const ghosts = [];
 
 
@@ -249,8 +249,8 @@ startAnimating(60);
 
 function ghostAttack(first,second){
   return !( first.x > second.x +second.width - 50|| //first.x is the left, first.width is the right
-          first.x + first.width - 60 <second.x ||
-          first.y > second.y + second.height  ||
+          first.x + first.width - 50 <second.x ||
+          first.y > second.y + second.height -5  ||
           first.y + first.height - 60 < second.y );
           
            //if any of these are true then the nun did not touch a ghost. ! returns these as false. if all these statments are not true  the nun did touch the ghost. ! returns these as true (double neg)
@@ -258,8 +258,8 @@ function ghostAttack(first,second){
 
 function resetGame(){
       
-    nun.x= -10; 
-    nun.y= -10;
+    nun.x= -  1000; 
+    nun.y= -1000;
    
     
 }
